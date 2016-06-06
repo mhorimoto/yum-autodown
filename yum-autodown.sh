@@ -2,8 +2,8 @@
 #########################################################
 # yum-autodown
 # yum-cron compatible "yum downloadonly" script
-# Version 1.00
-# Copyright 2015 HOLLY&Co.,Ltd.
+# Version 1.10
+# Copyright 2016 HOLLY&Co.,Ltd.
 #########################################################
 
 if [ -f /etc/sysconfig/yum-cron ]; then
@@ -20,7 +20,7 @@ case "$?" in
 	exit 0;;
     "100") yum -q -y --downloadonly update;
 	echo "Updates downloaded, use \"yum -C update\" manually to install them." >> $TMPF;
-	SUBJECT="System update:"$HOSTNAME;
+	SUBJECT="System update: "$HOSTNAME;
 	if [ "$MAILTO" == "" ]; then
 	    MAILTO="root";
 	fi
